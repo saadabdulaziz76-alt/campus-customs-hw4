@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Campus Customs — App Check</title>
+    <style>
+      :root {
+        --ink: #0b0d10;
+        --surface: #14181d;
+        --surface-2: #1b2026;
+        --line: #2a3039;
+        --text: #eef1f5;
+        --dim: #a8b1bd;
+        --faint: #6d7684;
+        --brass: #d4af6a;
+        --good: #5cc08d;
+        --blue: #5b9ce0;
+        --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 48px 24px 80px;
+        background: var(--ink);
+        color: var(--text);
+        font-family: var(--sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .wrap { max-width: 980px; margin: 0 auto; }
+
+      header.top {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 26px;
+        margin-bottom: 40px;
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--brass);
+        margin: 0 0 10px;
+      }
+
+      h1 { font-size: 34px; line-height: 1.15; margin: 0 0 12px; font-weight: 600; }
+      h2 { font-size: 22px; margin: 0 0 6px; font-weight: 600; }
+
+      .lede { color: var(--dim); margin: 0; max-width: 72ch; }
+
+      .meta {
+        margin-top: 16px;
+        font-size: 13px;
+        color: var(--faint);
+        font-family: var(--mono);
+      }
+
+      section.check {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 26px 26px 28px;
+        margin-bottom: 30px;
+      }
+
+      .num {
+        display: inline-grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--brass);
+        color: #241c08;
+        font-size: 13px;
+        font-weight: 700;
+        margin-right: 10px;
+        vertical-align: 2px;
+      }
+
+      .asked {
+        margin: 16px 0 6px;
+        padding: 12px 15px;
+        background: var(--surface-2);
+        border-left: 3px solid var(--blue);
+        border-radius: 5px;
+        font-size: 14.5px;
+        color: var(--text);
+      }
+
+      .asked b {
+        display: block;
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--faint);
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      figure { margin: 20px 0 0; }
+
+      img {
+        width: 100%;
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: #000;
+      }
+
+      figcaption {
+        margin-top: 11px;
+        font-size: 14px;
+        color: var(--dim);
+      }
+
+      figcaption strong { color: var(--text); font-weight: 600; }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 18px 0 4px;
+        font-size: 14px;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 9px 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      th {
+        font-size: 10.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--faint);
+        font-weight: 600;
+      }
+
+      td.val { font-family: var(--mono); font-size: 13px; }
+
+      .match { color: var(--good); font-weight: 600; }
+
+      pre {
+        background: #090b0e;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 14px 16px;
+        overflow-x: auto;
+        font-family: var(--mono);
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: var(--dim);
+        margin: 16px 0 0;
+      }
+
+      .verdict {
+        margin-top: 18px;
+        padding: 12px 15px;
+        background: rgba(92, 192, 141, 0.08);
+        border: 1px solid rgba(92, 192, 141, 0.32);
+        border-radius: 7px;
+        font-size: 14px;
+        color: #bfe6d1;
+      }
+
+      footer.bot {
+        margin-top: 44px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        font-size: 13px;
+        color: var(--faint);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <p class="eyebrow">Homework 4 · Problem 11</p>
+        <h1>Campus Customs — Live Site Check</h1>
+        <p class="lede">
+          Three checks run against the running application: the React front end on
+          <code>localhost:5173</code> talking to the FastAPI backend and PydanticAI agent on
+          <code>127.0.0.1:8000</code>, reading the real <code>campus_customs.db</code>.
+          Every screenshot below was taken from that live session. Where the agent states a
+          number, the same number is queried straight from the database and shown next to it.
+        </p>
+        <p class="meta">Checked 29 September 2026 · catalogue 102 products · inventory 612 size rows</p>
+      </header>
+
+      <!-- ============ CHECK 1 ============ -->
+      <section class="check">
+        <h2><span class="num">1</span>Chat reports honest stock and price from the database</h2>
+        <p class="lede">
+          The test product was chosen deliberately: it has an awkward, specific quantity in one
+          size and is completely sold out in another. A model inventing an answer would not
+          land on these numbers.
+        </p>
+
+        <div class="asked">
+          <b>Asked in the chat panel</b>
+          How many Baseball Left Chest Crewneck do you have in size M, and is XL available?
+          What does it cost?
+        </div>
+
+        <div class="asked" style="border-left-color: var(--brass)">
+          <b>The assistant replied</b>
+          There are 5 Baseball Left Chest Crewnecks in size M. XL is currently sold out; the
+          crewneck costs $58.
+        </div>
+
+        <table>
+          <thead>
+            <tr><th>Claim</th><th>Agent said</th><th>Database says</th><th>Match</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Quantity in M</td><td class="val">5</td><td class="val">5</td><td class="match">yes</td></tr>
+            <tr><td>XL availability</td><td class="val">sold out</td><td class="val">XL = 0</td><td class="match">yes</td></tr>
+            <tr><td>Price</td><td class="val">$58</td><td class="val">58.0</td><td class="match">yes</td></tr>
+          </tbody>
+        </table>
+
+        <pre>$ sqlite3 data/campus_customs.db "SELECT size, quantity FROM inventory
+    WHERE product_id='baseball-left-chest-crewneck';"
+
+XS|0     S|15     M|5     L|25     XL|0     XXL|25
+
+$ sqlite3 data/campus_customs.db "SELECT price FROM catalogue
+    WHERE product_id='baseball-left-chest-crewneck';"
+
+58.0</pre>
+
+        <figure>
+          <img src="app_check_images/inventory.jpg" alt="Chat panel showing the assistant reporting 5 in size M, XL sold out, and a price of $58" />
+          <figcaption>
+            The assistant answers with <strong>5 in size M</strong>, <strong>XL sold out</strong> and
+            <strong>$58</strong> — all three matching the database exactly. It reads inventory through
+            a tool rather than guessing, and admits the sold-out size instead of claiming a sale.
+          </figcaption>
+        </figure>
+
+        <p class="verdict">
+          Proves the agent's stock and price claims come from the database. The specific value
+          "5" and the zero-stock XL are the evidence: both are correct, and neither is a number
+          a guessing model would produce.
+        </p>
+      </section>
+
+      <!-- ============ CHECK 2 ============ -->
+      <section class="check">
+        <h2><span class="num">2</span>A category question fills the page with result cards</h2>
+        <p class="lede">
+          Asking about a category in the chat does not just return text — the agent returns
+          product ids, the server turns them into real cards, and the shop page updates
+          underneath the conversation.
+        </p>
+
+        <div class="asked">
+          <b>Asked in the chat panel</b>
+          What hoodies do you have?
+        </div>
+
+        <figure>
+          <img src="app_check_images/category-cards.jpg" alt="Products page showing a From the shop assistant panel titled Yale Hoodies with 12 product cards, next to the chat reply" />
+          <figcaption>
+            The reply arrives in the chat on the right, and at the same moment a
+            <strong>"From the shop assistant"</strong> panel appears on the page titled
+            <strong>Yale Hoodies</strong> with <strong>12 product cards</strong>. The
+            <strong>"12 showing on the page"</strong> pill under the reply links the two, and each
+            card is a real catalogue entry with its own image and price that can be clicked
+            through to the product.
+          </figcaption>
+        </figure>
+
+        <p class="verdict">
+          Proves the chat drives the page. The cards are hydrated by the server from the ids the
+          agent returned, so any product the agent invented is dropped before a shopper ever
+          sees it.
+        </p>
+      </section>
+
+      <!-- ============ CHECK 3 ============ -->
+      <section class="check">
+        <h2><span class="num">3</span>Usability feature from Problem 9 — filter by size, with stock on every card</h2>
+        <p class="lede">
+          A quarter of the size rows in this catalogue are sold out (145 of 612). Before this
+          feature, the only way to find that out was to open a product and discover your size
+          struck through. The size filter answers it at the grid level.
+        </p>
+
+        <figure>
+          <img src="app_check_images/size-filter-count.jpg" alt="Products page with the XL size chip selected, showing 77 items and a note reading Showing only items you can actually buy in XL" />
+          <figcaption>
+            With the <strong>XL</strong> chip selected the catalogue narrows from 102 to
+            <strong>77 items</strong>, and the page explains itself:
+            <strong>"Showing only items you can actually buy in XL."</strong> The filter is also
+            written to the URL as <code>/products?size=XL</code>, so the view is shareable and the
+            browser's Back button returns to it.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="app_check_images/size-filter-cards.jpg" alt="Filtered product cards each showing an XL in stock label, with a 2 sizes sold out badge on one card" />
+          <figcaption>
+            Every card in the filtered grid carries a green <strong>"XL in stock"</strong> label, and
+            the fleece jacket shows a <strong>"2 sizes sold out"</strong> badge — honest availability
+            before the shopper commits to a click.
+          </figcaption>
+        </figure>
+
+        <pre>$ sqlite3 data/campus_customs.db "SELECT COUNT(DISTINCT product_id) FROM inventory
+    WHERE size='XL' AND quantity > 0;"
+
+77          <-- the page showed 77 items</pre>
+
+        <p class="verdict">
+          Proves the filter is backed by real inventory, not a cosmetic control: the 77 products
+          shown are exactly the 77 the database reports as having XL in stock.
+        </p>
+      </section>
+
+      <footer class="bot">
+        Screenshots in <code>output/app_check_images/</code> · linked with relative paths ·
+        this page opens by double-clicking, no server required.
+      </footer>
+    </div>
+  </body>
+</html>

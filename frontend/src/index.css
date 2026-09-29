@@ -1,0 +1,199 @@
+/* Campus Customs — theme.
+   Near-black charcoal, Yale blue, brass, and a warm bone tone that the
+   garments sit on so the product photography reads as boutique rather than
+   as a spreadsheet of thumbnails. */
+
+:root {
+  /* Surfaces, darkest to lightest */
+  --ink: #08090c;
+  --ink-2: #0c0e12;
+  --surface: #101317;
+  --surface-2: #161a20;
+  --surface-3: #1e232b;
+  --line: #2a3039;
+  --line-soft: #1e232b;
+
+  /* Text */
+  --text: #f2f4f7;
+  --text-dim: #a8b1bd;
+  --text-faint: #6d7684;
+
+  /* Accents */
+  --yale-official: #00356b; /* Yale's actual blue — deep, used for fills */
+  --yale-deep: #17539c;
+  --yale: #5b9ce0;
+  --yale-glow: rgba(91, 156, 224, 0.16);
+  --brass: #d4af6a;
+  --brass-dim: rgba(212, 175, 106, 0.22);
+  --good: #5cc08d;
+  --bad: #e08189;
+
+  /* The warm off-white garments are photographed against */
+  --bone: #f1ece2;
+  --bone-2: #e6dfd2;
+
+  --radius: 12px;
+  --radius-sm: 7px;
+  --radius-lg: 20px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 14px 38px rgba(0, 0, 0, 0.4);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 26px 60px rgba(0, 0, 0, 0.5);
+
+  /* Bodoni for display — high-contrast, editorial, a little couture.
+     Inter carries everything you actually have to read. */
+  --display: 'Bodoni Moda', 'Didot', 'Iowan Old Style', Georgia, serif;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --ease: cubic-bezier(0.22, 0.75, 0.24, 1);
+  --dur: 0.38s;
+
+  color-scheme: dark;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--ink);
+  background-image:
+    radial-gradient(1100px 620px at 50% -12%, rgba(23, 83, 156, 0.16), transparent 68%),
+    radial-gradient(700px 420px at 92% 8%, rgba(212, 175, 106, 0.05), transparent 70%);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--text);
+}
+
+p {
+  margin: 0;
+  color: var(--text-dim);
+  line-height: 1.68;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--yale);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+::selection {
+  background: var(--yale-glow);
+}
+
+/* ---------- small shared type treatments ---------- */
+
+/* Letterspaced all-caps label. Used for eyebrows, meta, section marks. */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+/* A hairline with a brass tick, for section heads */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--brass-dim), transparent 42%);
+  border: 0;
+  margin: 0;
+}
+
+/* ---------- scroll reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal--in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- scrollbars ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333b47;
+}
+
+/* ---------- spinner ---------- */
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-top-color: var(--yale);
+  display: inline-block;
+  animation: spin 0.7s linear infinite;
+  flex: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
